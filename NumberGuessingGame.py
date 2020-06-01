@@ -2,34 +2,70 @@
 
 import random
 
-print("Hello, My name is Computer 1. What is your name?")
-#Computer Name
+print("Computer: Hello, My name is Computer. What is your name?\n")
 
-print("Well, <name>, I am thinking of a number between 1 and 20")
+#Computer Name
+computerName = ""
+alphabetList = []
+for i in range(97, 123):
+  alphabetList.append(chr(i))
+
+
+for key in range(random.randint(2, 10)):
+    i = random.randint(1, 26)
+    nameCharacter = alphabetList[i]
+    computerName = computerName + nameCharacter
+
+print(f"{computerName}: Hello, Computer. My name is {computerName}")
+
+print(f"Well, {computerName}, I am thinking of a number between 1 and 20")
 print("You will have 6 guesses.")
 
 #Selecting a random number between 1 and 20
 secretNumber = random.randint(1, 20)
-print(f"DEBUG:The secret number is : {secretNumber}")
+#print(f"DEBUG:The secret number is : {secretNumber}")
 
-for guessesTaken in range(1, 7): #or range(7)
-    print("Take a guess.")
-    userGuess = int(input())
+#Computer Guessing:
+computerList = [i for i in range(1, 21)]
+low = computerList[0]
+high = computerList[19]
+ #mid = (low + high)// 2
+guessesTaken = 1
 
-    if userGuess > secretNumber:
-        print("Your guess is too high")
-    elif userGuess < secretNumber:
-        print("Your guess is too low")
-    else:
-        break
 
-if userGuess == secretNumber:
+while guessesTaken != 6:
+  mid = (low + high)// 2
+  print("Take a guess.")
+  computerGuess = mid
+  if computerGuess > secretNumber:
+    print(mid)
+    print("Your guess is too high")
+    high = mid - 1
+    mid = (low + high)// 2
+
+  elif computerGuess < secretNumber:
+    print(mid)
+    print("Your guess is too low")
+    low = mid + 1
+    mid = (low + high)// 2
+
+  else:
+    print(mid)
+    break
+
+  guessesTaken = guessesTaken + 1 
+
+
+if computerGuess == secretNumber:
     print(f"Yes! You got it in, {guessesTaken} moves. ")
 else:
     print(f"Nope, The number was {secretNumber}")
 
-#for key in range(random.randInt(2, 10)):
- #   name = 
+
+
+
+
+
 
 
 

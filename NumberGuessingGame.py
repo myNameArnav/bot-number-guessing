@@ -17,8 +17,8 @@ for i in range(97, 123):
   alphabetList.append(chr(i))
 
 for key in range(random.randint(1, 10)):
-    i = random.randint(1, 26)
-    nameCharacter = alphabetList[i]
+    j = random.randint(0, 25)
+    nameCharacter = alphabetList[j]
     computerName = computerName + nameCharacter
 
 print(f"{computerName}: Hello, Computer. My name is {computerName}\n")

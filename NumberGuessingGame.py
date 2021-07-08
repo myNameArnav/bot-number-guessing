@@ -1,20 +1,21 @@
-#This is a twist on the classic number game
-#Here a computer itself tries to guess the number guessed by the computer
-#using trial and error
+# This is a twist on the classic number game
+# Here a computer itself tries to guess the number guessed by the computer
+# using trial and error
 
 import random
+import time
 
 print("Computer: Hello, My name is Computer. What is your name?\n")
 
-#Computer Name
-#Creating a random name using the alphabets 
-#Adding the alphabets to the empty lists
-#and assigning the name using random() functions
+# Computer Name
+# Creating a random name using the alphabets
+# Adding the alphabets to the empty lists
+# and assigning the name using random() functions
 computerName = ""
 alphabetList = []
 
 for i in range(97, 123):
-  alphabetList.append(chr(i))
+    alphabetList.append(chr(i))
 
 for key in range(random.randint(1, 10)):
     j = random.randint(0, 25)
@@ -22,14 +23,16 @@ for key in range(random.randint(1, 10)):
     computerName = computerName + nameCharacter
 
 print(f"{computerName}: Hello, Computer. My name is {computerName}\n")
-
+time.sleep(2)
 print(f"Well, {computerName}, I am thinking of a number between 1 and 20")
+time.sleep(2)
 print("You will have 6 guesses.\n")
+time.sleep(2)
 
-#Selecting a random number between 1 and 20
+# Selecting a random number between 1 and 20
 secretNumber = random.randint(1, 20)
 
-#Computer Guessing:
+# Computer Guessing:
 computerList = [i for i in range(1, 21)]
 low = computerList[0]
 high = computerList[19]
@@ -37,39 +40,31 @@ high = computerList[19]
 guessesTaken = 1
 
 while guessesTaken != 6:
-  mid = (low + high)// 2
-  print("Take a guess.")
-  computerGuess = mid
+    mid = (low + high) // 2
+    print("Take a guess.")
+    computerGuess = mid
+    time.sleep(1)
 
-  if computerGuess > secretNumber:
-    print(mid)
-    print("Your guess is too high")
-    high = mid - 1
-    mid = (low + high)// 2
+    if computerGuess > secretNumber:
+        print(mid)
+        print("Your guess is too high")
+        high = mid - 1
+        mid = (low + high) // 2
 
-  elif computerGuess < secretNumber:
-    print(mid)
-    print("Your guess is too low")
-    low = mid + 1
-    mid = (low + high)// 2
+    elif computerGuess < secretNumber:
+        print(mid)
+        print("Your guess is too low")
+        low = mid + 1
+        mid = (low + high) // 2
 
-  else:
-    print(mid)
-    break
+    else:
+        print(mid)
+        break
 
-  guessesTaken = guessesTaken + 1 
+    guessesTaken = guessesTaken + 1
 
 
 if computerGuess == secretNumber:
     print(f"Yes! You got it in, {guessesTaken} moves. ")
 else:
     print(f"Nope, The number was {secretNumber}")
-
-
-
-
-
-
-
-
-
